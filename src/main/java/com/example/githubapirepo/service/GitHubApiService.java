@@ -3,6 +3,7 @@ package com.example.githubapirepo.service;
 import com.example.githubapirepo.dto.BranchDTO;
 import com.example.githubapirepo.dto.GitHubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -42,7 +43,7 @@ public class GitHubApiService {
             }
             return result;
         } catch (HttpClientErrorException e) {
-            throw new ResponseStatusException(e.getStatusCode(), e.getMessage());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
     }
 

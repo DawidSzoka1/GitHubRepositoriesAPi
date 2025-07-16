@@ -31,8 +31,8 @@ public class GitHubApiController {
     @ExceptionHandler
     public ResponseEntity<Map<String, Object>> handleNotFound(ResponseStatusException e){
         Map<String, Object> error = new HashMap<>();
-        error.put("status", e.getStatusCode());
-        error.put("message", e.getMessage());
+        error.put("status", 404);
+        error.put("message", "User not found");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 }
